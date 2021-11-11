@@ -29,13 +29,13 @@ public class CalculatorProjectEvalIntelliJ
 				// uncomment startCalc() to call your method for an interactive calculator
         // uncomment testCalc() to try out a bunch of 
 				
-        // startCalc();   // you have to write this method below
+        startCalc();   // you have to write this method below
                         // it should ask the user for input and print
                         // results until the user enters "quit" to stop
         
 
         // use this to validate your project (the calculator part, anyways)
-        testCalc();     // testCalc will call a calculate(String s) method that you create
+        //testCalc();     // testCalc will call a calculate(String s) method that you create
                         // as part of your overall project. This method will take the user's
                         // input, and return a String with the appropriate output.
         
@@ -44,9 +44,13 @@ public class CalculatorProjectEvalIntelliJ
     }
 		
 		public static void startCalc(){
-        // your code here to get user input, and calculate/print results. You'll call
-        // the calculate(String s) as part of your code here, which returns a String
-        // with the result to print. 
+        System.out.println("Welcome to our calculator!");
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine;
+        while(!s.equalsIgnoreCase("quit"))
+        {
+            calculate(s);
+        }
         
     }
     
