@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.company;
+package templates;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author ParkerC
  */
-public class Main
+public class CalculatorProjectEvalIntelliJ
 {    
     /**
      * @param args the command line arguments
