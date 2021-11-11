@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package templates;
+package com.company;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author ParkerC
  */
-public class CalculatorProjectEvalIntelliJ
+public class Main
 {    
     /**
      * @param args the command line arguments
@@ -43,20 +43,21 @@ public class CalculatorProjectEvalIntelliJ
         
     }
 		
-		public static void startCalc(){
+    public static void startCalc(){
         System.out.println("Welcome to our calculator!");
         Scanner sc = new Scanner(System.in);
-        String s = sc.nextLine;
+        String s = sc.nextLine();
         while(!s.equalsIgnoreCase("quit"))
         {
-            calculate(s);
+            System.out.println(calculate(s));
         }
-        
+        System.out.println("Thanks for using our calculator :)");
     }
     
     public static String calculate(String s){
         // you add code here to take a String as a parameter, and return a String with the result
 				String result = "";
+
 				// you'll probably call other methods (that you write) here to do work,
 				// like deciding if it's a 2-part or 3-part expression, or calculating the result of a 
 				// 2-part expression or a 3-part expression
