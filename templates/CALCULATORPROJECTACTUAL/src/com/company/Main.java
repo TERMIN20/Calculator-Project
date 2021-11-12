@@ -29,13 +29,13 @@ public class Main
 				// uncomment startCalc() to call your method for an interactive calculator
         // uncomment testCalc() to try out a bunch of 
 				
-        //startCalc();   // you have to write this method below
+        startCalc();   // you have to write this method below
                         // it should ask the user for input and print
                         // results until the user enters "quit" to stop
         
 
         // use this to validate your project (the calculator part, anyways)
-        testCalc();     // testCalc will call a calculate(String s) method that you create
+        //testCalc();     // testCalc will call a calculate(String s) method that you create
                         // as part of your overall project. This method will take the user's
                         // input, and return a String with the appropriate output.
         
@@ -48,6 +48,7 @@ public class Main
         System.out.println("Welcome to our calculator!");
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
+        //make sure program isn't being quit, thank user if quit.
         while(!s.equalsIgnoreCase("quit"))
         {
             System.out.println(calculate(s));
@@ -61,11 +62,14 @@ public class Main
         // you add code here to take a String as a parameter, and return a String with the result
         Scanner inputScanner = new Scanner(s);
         String result = "";
+        //Check type of first token to figure out what type of expression this is.
         if (inputScanner.hasNextDouble())
         {
-            double num1 = 0.0;
-            String operation = null;
-            double num2 = 0.0;
+            double num1;
+            String operation;
+            double num2;
+
+            //Check if all necessary tokens are available, and assign them to variables.
             if (inputScanner.hasNextDouble())
             {
                 num1 = inputScanner.nextDouble();
@@ -91,35 +95,17 @@ public class Main
                 return "ERROR";
             }
 
-            if (operation.equals("+"))
-            {
-                return Double.toString(num1 + num2);
-            }
-            if (operation.equals("-"))
-            {
-                return Double.toString(num1 - num2);
-            }
-            if (operation.equals("*"))
-            {
-                return Double.toString(num1 * num2);
-            }
-            if (operation.equals("/"))
-            {
-                return Double.toString(num1 / num2);
-            }
-            if (operation.equals("%"))
-            {
-                return Double.toString(num1 % num2);
-            }
-            if (operation.equals("^"))
-            {
-                return Double.toString(Math.pow(num1, num2));
-            }
+            //if above are assigned, pass to actual method
+            return calculateTwoOperand(operation, num1, num2);
+
+
         }
         else if(inputScanner.hasNext())
         {
-            String operation = "";
-            double number = 0.0;
+            String operation;
+            double number;
+
+            //Check if all necessary tokens are available, and assign them to variables.
             if (inputScanner.hasNext())
             {
                 operation = inputScanner.next();
@@ -141,37 +127,12 @@ public class Main
                 return "ERROR";
             }
 
-
-            if (operation.equals("|"))
-            {
-                return Double.toString(Math.abs(number));
-            }
-            else if (operation.equals("v"))
-            {
-                return Double.toString(Math.sqrt(number));
-            }
-            else if (operation.equals("~"))
-            {
-                return Double.toString(Math.round(number));
-            }
-            else if (operation.equals("s"))
-            {
-                return Double.toString(Math.sin(number));
-            }
-            else if (operation.equals("c"))
-            {
-                return Double.toString(Math.cos(number));
-            }
-            else if (operation.equals("t"))
-            {
-                return Double.toString(Math.tan(number));
-            }
+            //if everything works so far, start the actual calculation.
+            return calculateOneOperand(operation, number);
 
 
 
         }
-
-
 
         // you'll probably call other methods (that you write) here to do work,
         // like deciding if it's a 2-part or 3-part expression, or calculating the result of a
@@ -180,6 +141,52 @@ public class Main
         return "ERROR";
 
     }
+    public static String calculateTwoOperand(String operation, double num1, double num2)
+    {
+        if (operation.equals("+"))
+        {
+            return Double.toString(num1 + num2);
+        }
+        else if (operation.equals("-"))
+        {
+            return Double.toString(num1 - num2);
+        }
+        else if (operation.equals("*"))
+        {
+            return Double.toString(num1 * num2);
+        }
+        else if (operation.equals("/"))
+        {
+            return Double.toString(num1 / num2);
+        }
+        else if (operation.equals("%"))
+        {
+            return Double.toString(num1 % num2);
+        }
+        else if (operation.equals("^"))
+        {
+            return Double.toString(Math.pow(num1, num2));
+        }
+        return "ERROR";
+    }
+    public static String calculateOneOperand(String operation, double number)
+    {
+        if (operation.equals("|")) {
+            return Double.toString(Math.abs(number));
+        } else if (operation.equals("v")) {
+            return Double.toString(Math.sqrt(number));
+        } else if (operation.equals("~")) {
+            return Double.toString(Math.round(number));
+        } else if (operation.equals("s")) {
+            return Double.toString(Math.sin(number));
+        } else if (operation.equals("c")) {
+            return Double.toString(Math.cos(number));
+        } else if (operation.equals("t")) {
+            return Double.toString(Math.tan(number));
+        }
+        return "ERROR";
+    }
+
     
 
     public static void testCalc() throws FileNotFoundException
